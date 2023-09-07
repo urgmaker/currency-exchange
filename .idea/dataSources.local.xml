@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-232.8660.185">
-    <data-source name="postgres@localhost" uuid="3a8a0c0d-bf8d-48f7-a539-5b34e55e7026">
+    <data-source name="postgres@localhost" uuid="2c176cd6-5b6d-43c4-beef-07d269724035">
       <database-info product="PostgreSQL" version="15.4" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.6.0" dbms="POSTGRES" exact-version="15.4" exact-driver-version="42.6">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
@@ -14,12 +14,13 @@
             <node kind="database" qname="@">
               <node kind="schema" qname="@" />
             </node>
-            <node kind="database" qname="currency_exchange">
+            <node kind="database" qname="currency_repository">
               <node kind="schema">
-                <name qname="exchanges" />
+                <name qname="currency_exchanger" />
                 <name qname="public" />
               </node>
             </node>
+            <node kind="database" qname="postgres" />
           </node>
         </introspection-scope>
       </schema-mapping>

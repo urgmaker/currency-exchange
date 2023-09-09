@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +20,16 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             FROM currency_exchanger.currencies
             """;
 
+    private static final String FIND_BY_ID = """
+            SELECT code, full_name, sign
+            FROM currency_exchanger.currencies
+            WHERE id = ?;
+            """;
+
     private CurrencyDao() {
 
     }
+
 
     @Override
     public List<CurrencyModel> findAll() {
@@ -42,6 +50,36 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
         }
     }
 
+    @Override
+    public Optional<CurrencyModel> findById(Long id) {
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID)) {
+            preparedStatement.setLong(1, id);
+
+            CurrencyModel currencyModel = null;
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                currencyModel = builderCurrency(resultSet);
+            }
+
+            return Optional.ofNullable(currencyModel);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(CurrencyModel entity) {
+
+    }
+
+    @Override
+    public CurrencyModel save(CurrencyModel entity) {
+        return null;
+    }
+
     private CurrencyModel builderCurrency(ResultSet resultSet) {
         try {
             return new CurrencyModel(
@@ -53,20 +91,5 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public Optional<CurrencyModel> findById(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public void update(CurrencyModel entity) {
-
-    }
-
-    @Override
-    public CurrencyModel save(CurrencyModel entity) {
-        return null;
     }
 }

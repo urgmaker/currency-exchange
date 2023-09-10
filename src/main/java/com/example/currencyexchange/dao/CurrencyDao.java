@@ -22,7 +22,7 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     private static final String FIND_BY_ID = """
             SELECT code, full_name, sign
             FROM currency_exchanger.currencies
-            WHERE id = ?;
+            WHERE id = ?
             """;
 
     private static final String UPDATE = """

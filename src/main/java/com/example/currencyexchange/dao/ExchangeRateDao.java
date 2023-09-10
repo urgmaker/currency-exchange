@@ -19,6 +19,12 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             FROM currency_repository.currency_exchanger.exchange_rates
             """;
 
+    private static final String FIND_BY_ID = """
+            SELECT base_currency_id, target_currency_id, rate
+            FROM currency_repository.currency_exchanger.exchange_rates
+            WHERE id = ?
+            """;
+
     @Override
     public List<ExchangeRateModel> findAll() {
         try (Connection connection = ConnectionManager.get();
@@ -41,7 +47,21 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
 
     @Override
     public Optional<ExchangeRateModel> findById(Long id) {
-        return Optional.empty();
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID)) {
+            ExchangeRateModel exchangeRateModel = null;
+
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                exchangeRateModel = builderExchangeRates(resultSet);
+            }
+
+            return Optional.ofNullable(exchangeRateModel);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

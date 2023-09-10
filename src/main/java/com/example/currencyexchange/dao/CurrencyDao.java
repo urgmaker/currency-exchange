@@ -31,6 +31,11 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             WHERE id = ?
             """;
 
+    private static final String SAVE = """
+            INSERT INTO currency_exchanger.currencies (code, full_name, sign) 
+            VALUES (?, ?, ?)
+            """;
+
     private CurrencyDao() {
 
     }
@@ -40,9 +45,9 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     public List<CurrencyModel> findAll() {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL)) {
+            List<CurrencyModel> currencies = new ArrayList<>();
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            List<CurrencyModel> currencies = new ArrayList<>();
 
             while (resultSet.next()) {
                 currencies.add(builderCurrency(resultSet));
@@ -59,17 +64,15 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     public Optional<CurrencyModel> findById(Long id) {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID)) {
-            preparedStatement.setLong(1, id);
-
             CurrencyModel currencyModel = null;
+
+            preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 currencyModel = builderCurrency(resultSet);
             }
-
             return Optional.ofNullable(currencyModel);
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -89,8 +92,15 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     }
 
     @Override
-    public CurrencyModel save(CurrencyModel entity) {
-        return null;
+    public void save(CurrencyModel entity) {
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(SAVE)) {
+            preparedStatement.setObject(1, entity.getCode());
+            preparedStatement.setObject(2, entity.getFullName());
+            preparedStatement.setObject(3, entity.getSign());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private CurrencyModel builderCurrency(ResultSet resultSet) {

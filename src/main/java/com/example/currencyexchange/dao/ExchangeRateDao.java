@@ -25,6 +25,15 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             WHERE id = ?
             """;
 
+    private static final String UPDATE = """
+            """;
+
+    private static final String SAVE = """
+            INSERT INTO currency_repository.currency_exchanger.exchange_rates
+            (base_currency_id, target_currency_id, rate)
+            VALUES (?, ?, ?)
+            """;
+
     @Override
     public List<ExchangeRateModel> findAll() {
         try (Connection connection = ConnectionManager.get();
@@ -71,7 +80,14 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
 
     @Override
     public void save(ExchangeRateModel entity) {
-
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(SAVE)) {
+            preparedStatement.setObject(1, entity.getBaseCurrencyId());
+            preparedStatement.setObject(2, entity.getTargetCurrencyId());
+            preparedStatement.setObject(3, entity.getRate());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private ExchangeRateModel builderExchangeRates(ResultSet resultSet) {

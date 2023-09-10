@@ -12,9 +12,9 @@ import java.math.BigDecimal;
 public class ExchangeRateModel {
     private Long id;
     @NonNull
-    private CurrencyModel baseCurrencyId;
+    private Long baseCurrencyId;
     @NonNull
-    private CurrencyModel targetCurrencyId;
+    private Long targetCurrencyId;
     @NonNull
     private BigDecimal rate;
 

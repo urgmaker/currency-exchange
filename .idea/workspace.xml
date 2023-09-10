@@ -5,29 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2c176cd6-5b6d-43c4-beef-07d269724035.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2c176cd6-5b6d-43c4-beef-07d269724035.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q/schema/exchanges.sDaYXA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/currency_exchange.kVIB0Q/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7df05245-ccc3-467f-94b7-6499ba26e53b/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/906aa877-8347-4f78-98b1-bd360e91e533.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/906aa877-8347-4f78-98b1-bd360e91e533/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e04700d8-3918-4bc3-9d1d-66a44ee3a0dc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e04700d8-3918-4bc3-9d1d-66a44ee3a0dc/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e04700d8-3918-4bc3-9d1d-66a44ee3a0dc/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e04700d8-3918-4bc3-9d1d-66a44ee3a0dc/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e04700d8-3918-4bc3-9d1d-66a44ee3a0dc/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/model/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/model/CurrencyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/model/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/model/ExchangeRateModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +17,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -101,6 +82,8 @@
       <workItem from="1694024949365" duration="1035000" />
       <workItem from="1694198538791" duration="54000" />
       <workItem from="1694247792344" duration="290000" />
+      <workItem from="1694248209451" duration="3846000" />
+      <workItem from="1694337006360" duration="822000" />
     </task>
     <servers />
   </component>

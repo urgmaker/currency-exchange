@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +23,12 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             SELECT code, full_name, sign
             FROM currency_exchanger.currencies
             WHERE id = ?;
+            """;
+
+    private static final String UPDATE = """
+            UPDATE currency_exchanger.currencies
+            SET code = ?, full_name = ?, sign = ?
+            WHERE id = ?
             """;
 
     private CurrencyDao() {
@@ -72,7 +77,15 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
 
     @Override
     public void update(CurrencyModel entity) {
-
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE)) {
+            preparedStatement.setObject(1, entity.getCode());
+            preparedStatement.setObject(2, entity.getFullName());
+            preparedStatement.setObject(3, entity.getSign());
+            preparedStatement.setObject(4, entity.getId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

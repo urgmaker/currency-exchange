@@ -40,6 +40,9 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
 
     }
 
+    public static CurrencyDao getInstance() {
+        return CURRENCY_DAO;
+    }
 
     @Override
     public List<CurrencyModel> findAll() {

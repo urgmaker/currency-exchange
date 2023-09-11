@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
+    private static final ExchangeRateDao EXCHANGE_RATE_DAO = new ExchangeRateDao();
     private static final String FIND_ALL = """
             SELECT id, base_currency_id, target_currency_id, rate
             FROM currency_repository.currency_exchanger.exchange_rates
@@ -36,6 +37,14 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             (base_currency_id, target_currency_id, rate)
             VALUES (?, ?, ?)
             """;
+
+    private ExchangeRateDao() {
+
+    }
+
+    private static ExchangeRateDao getInstance() {
+        return EXCHANGE_RATE_DAO;
+    }
 
     @Override
     public List<ExchangeRateModel> findAll() {

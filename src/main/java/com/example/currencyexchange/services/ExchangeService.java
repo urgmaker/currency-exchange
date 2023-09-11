@@ -1,9 +1,12 @@
 package com.example.currencyexchange.services;
 
 import com.example.currencyexchange.dao.ExchangeRateDao;
-import com.example.currencyexchange.dto.ExchangeResponseDto;
+import com.example.currencyexchange.model.ExchangeRateModel;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.util.Optional;
+
 
 public class ExchangeService {
     private static final ExchangeService INSTANCE = new ExchangeService();
@@ -17,5 +20,27 @@ public class ExchangeService {
         return INSTANCE;
     }
 
+    private Optional<ExchangeRateModel> getFromDirectExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
+        return exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
+    }
+    
+    private Optional<ExchangeRateModel> getFromReverseExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
+        Optional<ExchangeRateModel> exchangeRateOptional = exchangeRateDao
+                .findByCode(targetCurrencyCode, baseCurrencyCode);
+
+        if (exchangeRateOptional.isEmpty()) {
+            return Optional.empty();
+        }
+
+        ExchangeRateModel reverseExchangeRate = exchangeRateOptional.get();
+
+        ExchangeRateModel directExchangeRate = new ExchangeRateModel(
+            reverseExchangeRate.getTargetCurrency(),
+                reverseExchangeRate.getBaseCurrency(),
+                BigDecimal.ONE.divide(reverseExchangeRate.getRate(), MathContext.DECIMAL64)
+        );
+
+        return Optional.of(directExchangeRate);
+    }
 
 }

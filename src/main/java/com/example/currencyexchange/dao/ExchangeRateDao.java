@@ -37,6 +37,12 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             VALUES (?, ?, ?)
             """;
 
+    private static final String FIND_BY_CODE = """
+            SELECT id, base_currency_id, target_currency_id, rate
+            FROM currency_repository.currency_exchanger.exchange_rates
+            WHERE base_currency_id = ? AND target_currency_id = ?
+            """;
+
     private ExchangeRateDao() {
 
     }
@@ -79,6 +85,22 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             }
 
             return Optional.ofNullable(exchangeRateModel);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Optional<ExchangeRateModel> findByCode(String baseCurrencyCode, String targetCurrencyCode) {
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_CODE)) {
+            preparedStatement.setString(1, baseCurrencyCode);
+            preparedStatement.setString(2, targetCurrencyCode);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()) {
+                return Optional.empty();
+            }
+            return Optional.of(builderExchangeRates(resultSet));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

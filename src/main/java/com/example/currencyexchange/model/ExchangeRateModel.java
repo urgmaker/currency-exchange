@@ -12,9 +12,9 @@ import java.math.BigDecimal;
 public class ExchangeRateModel {
     private Long id;
     @NonNull
-    private Long baseCurrencyId;
+    private Long baseCurrency;
     @NonNull
-    private Long targetCurrencyId;
+    private Long targetCurrency;
     @NonNull
     private BigDecimal rate;
 
@@ -22,8 +22,8 @@ public class ExchangeRateModel {
     public String toString() {
         return "ExchangeRate{" +
                "id=" + id +
-               ", baseCurrencyId=" + baseCurrencyId +
-               ", targetCurrencyId=" + targetCurrencyId +
+               ", baseCurrencyId=" + baseCurrency +
+               ", targetCurrencyId=" + targetCurrency +
                ", rate=" + rate +
                '}';
     }

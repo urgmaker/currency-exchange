@@ -1,6 +1,5 @@
 package com.example.currencyexchange.dao;
 
-import com.example.currencyexchange.model.CurrencyModel;
 import com.example.currencyexchange.model.ExchangeRateModel;
 import com.example.currencyexchange.util.ConnectionManager;
 
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
-    private static final ExchangeRateDao EXCHANGE_RATE_DAO = new ExchangeRateDao();
+    private static final ExchangeRateDao INSTANCE = new ExchangeRateDao();
     private static final String FIND_ALL = """
             SELECT id, base_currency_id, target_currency_id, rate
             FROM currency_repository.currency_exchanger.exchange_rates
@@ -42,8 +41,8 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
 
     }
 
-    private static ExchangeRateDao getInstance() {
-        return EXCHANGE_RATE_DAO;
+    public static ExchangeRateDao getInstance() {
+        return INSTANCE;
     }
 
     @Override

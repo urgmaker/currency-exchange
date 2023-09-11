@@ -36,6 +36,12 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             VALUES (?, ?, ?)
             """;
 
+    private static final String FIND_BY_CODE = """
+            SELECT id, code, full_name, sign
+            FROM currency_exchanger.currencies
+            WHERE code = ?
+            """;
+
     private CurrencyDao() {
 
     }
@@ -78,6 +84,20 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             return Optional.ofNullable(currencyModel);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public Optional<CurrencyModel> findByCode(String code) throws SQLException {
+        try (Connection connection = ConnectionManager.get();
+             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_CODE)) {
+            preparedStatement.setString(1, code);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (!resultSet.next()) {
+                return Optional.empty();
+            }
+
+            return Optional.of(builderCurrency(resultSet));
         }
     }
 

@@ -21,6 +21,16 @@ public class ExchangeService {
         return INSTANCE;
     }
 
+    private Optional<ExchangeRateModel> getExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
+        Optional<ExchangeRateModel> exchangeRate = getFromDirectExchangeRate(baseCurrencyCode, targetCurrencyCode);
+
+        if (exchangeRate.isEmpty()) {
+            exchangeRate = getFromReverseExchangeRate(baseCurrencyCode, targetCurrencyCode);
+        }
+
+        return exchangeRate;
+    }
+
     private Optional<ExchangeRateModel> getFromDirectExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
         return exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
     }

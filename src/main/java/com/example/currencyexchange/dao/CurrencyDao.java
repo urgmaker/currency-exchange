@@ -51,7 +51,7 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     }
 
     @Override
-    public List<CurrencyModel> findAll() {
+    public List<CurrencyModel> findAll() throws SQLException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL)) {
             List<CurrencyModel> currencies = new ArrayList<>();
@@ -63,9 +63,6 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             }
 
             return currencies;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 

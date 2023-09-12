@@ -79,7 +79,7 @@ public class ExchangeService {
 
     private static ExchangeRateModel getExchangeForCode(List<ExchangeRateModel> rateModels, String code) {
         return rateModels.stream()
-                .filter(rateModel -> rateModel.getTargetCurrency().getCode().equals(code))
+                .filter(rate -> rate.getTargetCurrency().getCode().equals(code))
                 .findFirst()
                 .orElseThrow();
     }

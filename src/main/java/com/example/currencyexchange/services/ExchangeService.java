@@ -1,11 +1,15 @@
 package com.example.currencyexchange.services;
 
 import com.example.currencyexchange.dao.ExchangeRateDao;
+import com.example.currencyexchange.dto.ExchangeResponseDto;
 import com.example.currencyexchange.model.ExchangeRateModel;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -19,6 +23,25 @@ public class ExchangeService {
 
     public static ExchangeService getInstance() {
         return INSTANCE;
+    }
+
+    public ExchangeResponseDto convertCurrency(
+            String baseCurrencyCode,
+            String targetCurrencyCode,
+            BigDecimal amount) throws SQLException, NoSuchElementException {
+
+        ExchangeRateModel exchangeRateModel = getExchangeRate(baseCurrencyCode, targetCurrencyCode).orElseThrow();
+
+        BigDecimal convertedAmount = amount.multiply((exchangeRateModel.getRate())
+                .setScale(2, RoundingMode.HALF_EVEN));
+
+        return new ExchangeResponseDto(
+                exchangeRateModel.getBaseCurrency(),
+                exchangeRateModel.getTargetCurrency(),
+                exchangeRateModel.getRate(),
+                amount,
+                convertedAmount
+        );
     }
 
     private Optional<ExchangeRateModel> getExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {

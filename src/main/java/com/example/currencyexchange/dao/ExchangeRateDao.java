@@ -2,7 +2,7 @@ package com.example.currencyexchange.dao;
 
 import com.example.currencyexchange.models.CurrencyModel;
 import com.example.currencyexchange.models.ExchangeRateModel;
-import com.example.currencyexchange.util.ConnectionManager;
+import com.example.currencyexchange.utils.ConnectionManager;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

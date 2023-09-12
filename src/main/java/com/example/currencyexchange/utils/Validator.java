@@ -4,7 +4,7 @@ import java.util.Currency;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Validator {
+public final class Validator {
     private static Set<String> currencyCodes;
 
     public static boolean isValidCurrencyCode(String code) {

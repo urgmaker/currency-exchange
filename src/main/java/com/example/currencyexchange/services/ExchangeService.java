@@ -5,6 +5,7 @@ import com.example.currencyexchange.model.ExchangeRateModel;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -41,6 +42,13 @@ public class ExchangeService {
         );
 
         return Optional.of(directExchangeRate);
+    }
+
+    private static ExchangeRateModel getExchangeForCode(List<ExchangeRateModel> rateModels, String code) {
+        return rateModels.stream()
+                .filter(rateModel -> rateModel.getTargetCurrency().getCode().equals(code))
+                .findFirst()
+                .orElseThrow();
     }
 
 }

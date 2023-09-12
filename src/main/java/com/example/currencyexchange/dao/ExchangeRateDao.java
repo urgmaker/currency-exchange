@@ -1,5 +1,6 @@
 package com.example.currencyexchange.dao;
 
+import com.example.currencyexchange.model.CurrencyModel;
 import com.example.currencyexchange.model.ExchangeRateModel;
 import com.example.currencyexchange.util.ConnectionManager;
 
@@ -110,8 +111,8 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     public void update(ExchangeRateModel entity) {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE)) {
-            preparedStatement.setObject(1, entity.getBaseCurrencyId());
-            preparedStatement.setObject(2, entity.getTargetCurrencyId());
+            preparedStatement.setObject(1, entity.getBaseCurrency());
+            preparedStatement.setObject(2, entity.getTargetCurrency());
             preparedStatement.setObject(3, entity.getRate());
             preparedStatement.setObject(4, entity.getId());
         } catch (SQLException e) {
@@ -123,8 +124,8 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     public void save(ExchangeRateModel entity) {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE)) {
-            preparedStatement.setObject(1, entity.getBaseCurrencyId());
-            preparedStatement.setObject(2, entity.getTargetCurrencyId());
+            preparedStatement.setObject(1, entity.getBaseCurrency());
+            preparedStatement.setObject(2, entity.getTargetCurrency());
             preparedStatement.setObject(3, entity.getRate());
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -135,8 +136,8 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
         try {
             return new ExchangeRateModel(
                     resultSet.getObject("id", Long.class),
-                    resultSet.getObject("base_currency_id", Long.class),
-                    resultSet.getObject("target_currency_id", Long.class),
+                    resultSet.getObject("base_currency_id", CurrencyModel.class),
+                    resultSet.getObject("target_currency_id", CurrencyModel.class),
                     resultSet.getObject("rate", BigDecimal.class)
             );
         } catch (SQLException e) {

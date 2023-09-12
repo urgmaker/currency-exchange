@@ -1,4 +1,4 @@
-package com.example.currencyexchange.model;
+package com.example.currencyexchange.models;
 
 import lombok.*;
 

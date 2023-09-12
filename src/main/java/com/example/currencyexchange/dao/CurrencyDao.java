@@ -1,6 +1,6 @@
 package com.example.currencyexchange.dao;
 
-import com.example.currencyexchange.model.CurrencyModel;
+import com.example.currencyexchange.models.CurrencyModel;
 import com.example.currencyexchange.util.ConnectionManager;
 
 import java.sql.Connection;

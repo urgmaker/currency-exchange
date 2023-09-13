@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2c176cd6-5b6d-43c4-beef-07d269724035.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2c176cd6-5b6d-43c4-beef-07d269724035.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.java" afterDir="false" />
+    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Add doPost method to CurrenciesServlet">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +90,24 @@
       <workItem from="1694352751050" duration="2103000" />
       <workItem from="1694451295792" duration="70000" />
       <workItem from="1694454834227" duration="2704000" />
-      <workItem from="1694604293697" duration="1982000" />
+      <workItem from="1694604293697" duration="2326000" />
     </task>
+    <task id="LOCAL-00001" summary="Add doPost method to CurrenciesServlet">
+      <option name="closed" value="true" />
+      <created>1694606317178</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694606317178</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add doPost method to CurrenciesServlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add doPost method to CurrenciesServlet" />
   </component>
 </project>

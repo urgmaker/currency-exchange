@@ -3,10 +3,7 @@ package com.example.currencyexchange.dao;
 import com.example.currencyexchange.models.CurrencyModel;
 import com.example.currencyexchange.utils.ConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -112,14 +109,18 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     }
 
     @Override
-    public void save(CurrencyModel entity) {
+    public Long save(CurrencyModel entity) throws SQLException {
         try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(SAVE)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getCode());
             preparedStatement.setObject(2, entity.getFullName());
             preparedStatement.setObject(3, entity.getSign());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+            ResultSet savedCurrency = preparedStatement.getGeneratedKeys();
+            savedCurrency.next();
+            Long savedId = savedCurrency.getLong("id");
+            connection.commit();
+            return savedId;
         }
     }
 

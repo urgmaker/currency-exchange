@@ -3,6 +3,7 @@ package com.example.currencyexchange.servlets.currencies;
 import com.example.currencyexchange.dao.CurrencyDao;
 import com.example.currencyexchange.dto.ErrorResponseDto;
 import com.example.currencyexchange.models.CurrencyModel;
+import com.example.currencyexchange.utils.Validator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,6 +19,7 @@ import java.util.List;
 public class CurrenciesServlet extends HttpServlet {
     private final CurrencyDao currencyDao = CurrencyDao.getInstance();
     private final ObjectMapper objectMapper = new ObjectMapper();
+    private final String INTEGRITY_CONSTRAINT_VIOLATION_CODE = "23505";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -35,6 +37,56 @@ public class CurrenciesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO: implements POST - method logic
+        String name = req.getParameter("name");
+        String code = req.getParameter("code");
+        String sign = req.getParameter("sign");
+
+        if (name == null || name.isBlank()) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Missing parameter - name"
+            ));
+        }
+
+        if (code == null || code.isBlank()) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Missing parameter - code"
+            ));
+        }
+
+        if (sign == null || sign.isBlank()) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Missing parameter - sign"
+            ));
+        }
+
+        if (!Validator.isValidCurrencyCode(code)) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Currency code must to be in ISO 4217 format"
+            ));
+        }
+
+        try {
+            CurrencyModel currency = new CurrencyModel(code, name, sign);
+            Long savedCurrencyId = currencyDao.save(currency);
+            currency.setId(savedCurrencyId);
+
+            objectMapper.writeValue(resp.getWriter(), currency);
+        } catch (SQLException e) {
+            if (e.getSQLState().equals(INTEGRITY_CONSTRAINT_VIOLATION_CODE)) {
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                        "Database error! Please, try again later"
+                ));
+            }
+        }
     }
 }

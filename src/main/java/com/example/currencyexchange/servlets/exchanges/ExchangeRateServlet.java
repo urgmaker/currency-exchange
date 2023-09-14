@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -28,13 +29,101 @@ public class ExchangeRateServlet extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
                     HttpServletResponse.SC_BAD_REQUEST,
-                "Currency codes are either not provided or provided in an incorrect format"
+                    "Currency codes are either not provided or provided in an incorrect format"
             ));
         }
 
         String baseCurrencyCode = url.substring(0, 3);
         String targetCurrencyCode = url.substring(3);
 
+        isValidUrl(resp, baseCurrencyCode, targetCurrencyCode);
+
+        try {
+            Optional<ExchangeRateModel> exchangeRateOptional = exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
+
+            if (exchangeRateOptional.isEmpty()) {
+                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                        HttpServletResponse.SC_NOT_FOUND,
+                        "There is no exchange rate for this currency pair"
+                ));
+            }
+
+            objectMapper.writeValue(resp.getWriter(), exchangeRateOptional.get());
+        } catch (SQLException e) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "Database error. Please, try again later!"
+            ));
+        }
+    }
+
+    protected void doPatch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String url = req.getPathInfo().replaceAll("/", "");
+
+        if (url.length() != 6) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Currency codes are either not provided or provided in an incorrect format"
+            ));
+        }
+
+        String parameter = req.getReader().readLine();
+
+        if (parameter == null || !parameter.contains("rate")) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Missing required parameter rate"
+            ));
+        }
+
+        String baseCurrencyCode = url.substring(0, 3);
+        String targetCurrencyCode = url.substring(3);
+        String paramRateValue = parameter.replace("rate=", "");
+
+        isValidUrl(resp, baseCurrencyCode, targetCurrencyCode);
+
+        BigDecimal rate = null;
+        try {
+            rate = BigDecimal.valueOf(Double.parseDouble(paramRateValue));
+        } catch (NumberFormatException e) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Incorrect value of rate parameter"
+            ));
+        }
+
+        try {
+            Optional<ExchangeRateModel> exchangeRateOptional = exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
+
+            if (exchangeRateOptional.isEmpty()) {
+                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                        HttpServletResponse.SC_NOT_FOUND,
+                        "There is no exchange rate for this currency pair"
+                ));
+            }
+
+            ExchangeRateModel exchangeRate = exchangeRateOptional.get();
+            exchangeRate.setRate(rate);
+            exchangeRateDao.update(exchangeRate);
+
+            objectMapper.writeValue(resp.getWriter(), exchangeRate);
+        } catch (SQLException e) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "Database error. Please, try again later!"
+            ));
+        }
+
+    }
+
+    private void isValidUrl(HttpServletResponse resp, String baseCurrencyCode, String targetCurrencyCode) throws IOException {
         if (!Validator.isValidCurrencyCode(baseCurrencyCode)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
@@ -50,26 +139,5 @@ public class ExchangeRateServlet extends HttpServlet {
                     "Base currency code must be in ISO 4217 format"
             ));
         }
-
-        try {
-            Optional<ExchangeRateModel> exchangeRate = exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
-
-            if (exchangeRate.isEmpty()) {
-                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                        HttpServletResponse.SC_NOT_FOUND,
-                        "There is no exchange rate for this currency pair"
-                ));
-            }
-
-            objectMapper.writeValue(resp.getWriter(), exchangeRate.get());
-        } catch (SQLException e) {
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Database error. Please, try again later!"
-            ));
-        }
-
     }
 }

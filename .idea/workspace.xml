@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Add doPost method to CurrenciesServlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" afterDir="false" />
+    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Prepare ExchangeRatesServlet to logic implementation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -90,7 +92,8 @@
       <workItem from="1694352751050" duration="2103000" />
       <workItem from="1694451295792" duration="70000" />
       <workItem from="1694454834227" duration="2704000" />
-      <workItem from="1694604293697" duration="2326000" />
+      <workItem from="1694604293697" duration="2836000" />
+      <workItem from="1694680004022" duration="436000" />
     </task>
     <task id="LOCAL-00001" summary="Add doPost method to CurrenciesServlet">
       <option name="closed" value="true" />
@@ -100,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694606317178</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Prepare ExchangeRatesServlet to logic implementation">
+      <option name="closed" value="true" />
+      <created>1694606671965</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694606671965</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +119,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add doPost method to CurrenciesServlet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add doPost method to CurrenciesServlet" />
+    <MESSAGE value="Prepare ExchangeRatesServlet to logic implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prepare ExchangeRatesServlet to logic implementation" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

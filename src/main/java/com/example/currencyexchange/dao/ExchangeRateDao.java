@@ -5,10 +5,7 @@ import com.example.currencyexchange.models.ExchangeRateModel;
 import com.example.currencyexchange.utils.ConnectionManager;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +50,7 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     }
 
     @Override
-    public List<ExchangeRateModel> findAll() {
+    public List<ExchangeRateModel> findAll() throws SQLException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL)) {
             List<ExchangeRateModel> exchangeRateModels = new ArrayList<>();
@@ -66,8 +63,6 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
 
             return exchangeRateModels;
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -121,12 +116,18 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     }
 
     @Override
-    public void save(ExchangeRateModel entity) {
+    public Long save(ExchangeRateModel entity) {
         try (Connection connection = ConnectionManager.get();
-             PreparedStatement preparedStatement = connection.prepareStatement(SAVE)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setObject(1, entity.getBaseCurrency());
             preparedStatement.setObject(2, entity.getTargetCurrency());
             preparedStatement.setObject(3, entity.getRate());
+
+            ResultSet savedExchangeRate = preparedStatement.getGeneratedKeys();
+            savedExchangeRate.next();
+            Long savedId = savedExchangeRate.getLong("id");
+            connection.commit();
+            return savedId;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

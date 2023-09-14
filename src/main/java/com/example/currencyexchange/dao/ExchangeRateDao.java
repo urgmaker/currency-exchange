@@ -86,7 +86,7 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
         }
     }
 
-    public Optional<ExchangeRateModel> findByCode(String baseCurrencyCode, String targetCurrencyCode) {
+    public Optional<ExchangeRateModel> findByCode(String baseCurrencyCode, String targetCurrencyCode) throws SQLException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_CODE)) {
             preparedStatement.setString(1, baseCurrencyCode);
@@ -97,8 +97,6 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
                 return Optional.empty();
             }
             return Optional.of(builderExchangeRates(resultSet));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 

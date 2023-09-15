@@ -24,7 +24,7 @@ public class CurrencyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String code = req.getPathInfo().replaceAll("/", "");
 
-        if (!Validator.isValidCurrencyCode(code)) {
+        if (Validator.isNotValidCurrencyCode(code)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
                     HttpServletResponse.SC_BAD_REQUEST,

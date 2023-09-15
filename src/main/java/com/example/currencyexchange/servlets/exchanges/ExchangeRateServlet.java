@@ -45,7 +45,7 @@ public class ExchangeRateServlet extends HttpServlet {
         String baseCurrencyCode = url.substring(0, 3);
         String targetCurrencyCode = url.substring(3);
 
-        isValidUrl(resp, baseCurrencyCode, targetCurrencyCode);
+        Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
 
         try {
             Optional<ExchangeRateModel> exchangeRateOptional = exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
@@ -93,7 +93,7 @@ public class ExchangeRateServlet extends HttpServlet {
         String targetCurrencyCode = url.substring(3);
         String paramRateValue = parameter.replace("rate=", "");
 
-        isValidUrl(resp, baseCurrencyCode, targetCurrencyCode);
+        Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
 
         BigDecimal rate = null;
         try {
@@ -132,21 +132,4 @@ public class ExchangeRateServlet extends HttpServlet {
 
     }
 
-    private void isValidUrl(HttpServletResponse resp, String baseCurrencyCode, String targetCurrencyCode) throws IOException {
-        if (!Validator.isValidCurrencyCode(baseCurrencyCode)) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Base currency code must be in ISO 4217 format"
-            ));
-        }
-
-        if (!Validator.isValidCurrencyCode(targetCurrencyCode)) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Base currency code must be in ISO 4217 format"
-            ));
-        }
-    }
 }

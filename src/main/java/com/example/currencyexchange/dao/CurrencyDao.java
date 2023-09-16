@@ -12,7 +12,7 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
     private static final CurrencyDao CURRENCY_DAO = new CurrencyDao();
 
     private static final String FIND_ALL = """
-            SELECT id, code, full_name, sign
+            SELECT CAST(public.currencies.id AS bigint), code, full_name, sign
             FROM public.currencies
             """;
 

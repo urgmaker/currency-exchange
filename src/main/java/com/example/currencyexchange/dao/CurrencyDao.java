@@ -29,7 +29,7 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             """;
 
     private static final String SAVE = """
-            INSERT INTO currency_exchanger.currencies (code, full_name, sign) 
+            INSERT INTO currency_exchanger.currencies (code, full_name, sign)\s
             VALUES (?, ?, ?)
             """;
 

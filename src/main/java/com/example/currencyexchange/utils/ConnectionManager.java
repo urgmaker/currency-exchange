@@ -20,7 +20,7 @@ public final class ConnectionManager {
 
     private static void loadDriver() {
         try {
-            Class.forName(DRIVER_KEY);
+            Class.forName(PropertiesUtil.get(DRIVER_KEY));
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

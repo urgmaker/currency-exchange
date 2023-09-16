@@ -1,0 +1,10 @@
+com/example/currencyexchange/servlets/currencies/CurrencyServlet.class
+com/example/currencyexchange/models/ExchangeRateModel.class
+com/example/currencyexchange/servlets/currencies/CurrenciesServlet.class
+com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.class
+com/example/currencyexchange/dao/Dao.class
+com/example/currencyexchange/utils/PropertiesUtil.class
+com/example/currencyexchange/dao/ExchangeRateDao.class
+com/example/currencyexchange/models/CurrencyModel.class
+com/example/currencyexchange/HelloServlet.class
+com/example/currencyexchange/dao/CurrencyDao.class

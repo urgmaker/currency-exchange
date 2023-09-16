@@ -44,7 +44,8 @@ public class ExchangeService {
         );
     }
 
-    private Optional<ExchangeRateModel> getExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
+    private Optional<ExchangeRateModel> getExchangeRate(String baseCurrencyCode,
+                                                        String targetCurrencyCode) throws SQLException {
         Optional<ExchangeRateModel> exchangeRate = getFromDirectExchangeRate(baseCurrencyCode, targetCurrencyCode);
 
         if (exchangeRate.isEmpty()) {
@@ -54,11 +55,13 @@ public class ExchangeService {
         return exchangeRate;
     }
 
-    private Optional<ExchangeRateModel> getFromDirectExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
+    private Optional<ExchangeRateModel> getFromDirectExchangeRate(String baseCurrencyCode,
+                                                                  String targetCurrencyCode) throws SQLException {
         return exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
     }
-    
-    private Optional<ExchangeRateModel> getFromReverseExchangeRate(String baseCurrencyCode, String targetCurrencyCode) {
+
+    private Optional<ExchangeRateModel> getFromReverseExchangeRate(String baseCurrencyCode,
+                                                                   String targetCurrencyCode) throws SQLException {
         Optional<ExchangeRateModel> exchangeRateOptional = exchangeRateDao
                 .findByCode(targetCurrencyCode, baseCurrencyCode);
 
@@ -69,7 +72,7 @@ public class ExchangeService {
         ExchangeRateModel reverseExchangeRate = exchangeRateOptional.get();
 
         ExchangeRateModel directExchangeRate = new ExchangeRateModel(
-            reverseExchangeRate.getTargetCurrency(),
+                reverseExchangeRate.getTargetCurrency(),
                 reverseExchangeRate.getBaseCurrency(),
                 BigDecimal.ONE.divide(reverseExchangeRate.getRate(), MathContext.DECIMAL64)
         );

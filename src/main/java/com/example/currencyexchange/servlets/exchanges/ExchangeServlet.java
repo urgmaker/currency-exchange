@@ -1,6 +1,5 @@
 package com.example.currencyexchange.servlets.exchanges;
 
-import com.example.currencyexchange.dao.ExchangeRateDao;
 import com.example.currencyexchange.dto.ErrorResponseDto;
 import com.example.currencyexchange.dto.ExchangeResponseDto;
 import com.example.currencyexchange.services.ExchangeService;

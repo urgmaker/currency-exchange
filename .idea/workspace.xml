@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Prepare ExchangeServlet to logic implementation">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/postgresql-42.6.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/HelloServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/services/ExchangeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/services/ExchangeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/EncodingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/EncodingFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/utils/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/utils/ConnectionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,13 +44,16 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2V2CmHOKWIrKRX0gibNQrFkKiEA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -204,7 +202,7 @@
       <workItem from="1694604293697" duration="2836000" />
       <workItem from="1694680004022" duration="3445000" />
       <workItem from="1694804186964" duration="289000" />
-      <workItem from="1694850824035" duration="589000" />
+      <workItem from="1694850824035" duration="2501000" />
     </task>
     <task id="LOCAL-00001" summary="Add doPost method to CurrenciesServlet">
       <option name="closed" value="true" />
@@ -229,6 +227,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Add doPost method to CurrenciesServlet" />
     <MESSAGE value="Prepare ExchangeRatesServlet to logic implementation" />
     <option name="LAST_COMMIT_MESSAGE" value="Prepare ExchangeRatesServlet to logic implementation" />

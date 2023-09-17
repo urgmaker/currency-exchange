@@ -13,8 +13,21 @@ import java.util.Optional;
 public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     private static final ExchangeRateDao INSTANCE = new ExchangeRateDao();
     private static final String FIND_ALL = """
-            SELECT CAST(public.exchange_rates.id AS bigint), base_currency_id, target_currency_id, rate
-            FROM public.exchange_rates
+            SELECT
+                CAST(er.id AS bigint) AS id,
+                bc.id AS base_id,
+                bc.code AS base_code,
+                bc.full_name AS base_name,
+                bc.sign AS base_sign,
+                tc.id AS target_id,
+                tc.code AS target_code,
+                tc.full_name AS target_name,
+                tc.sign AS target_sign,
+                er.rate AS rate
+            FROM public.exchange_rates AS er
+            JOIN public.currencies bc ON er.base_currency_id = bc.id
+            JOIN public.currencies tc ON er.target_currency_id = tc.id
+            ORDER BY er.id
             """;
 
     private static final String FIND_BY_ID = """

@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Prepare ExchangeServlet to logic implementation" />
+    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Prepare ExchangeServlet to logic implementation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -203,7 +206,7 @@
       <workItem from="1694862361616" duration="63000" />
       <workItem from="1694863606920" duration="106000" />
       <workItem from="1694871451679" duration="2835000" />
-      <workItem from="1694929445228" duration="344000" />
+      <workItem from="1694929445228" duration="2294000" />
     </task>
     <task id="LOCAL-00001" summary="Add doPost method to CurrenciesServlet">
       <option name="closed" value="true" />

@@ -31,9 +31,24 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             """;
 
     private static final String FIND_BY_ID = """
-            SELECT base_currency_id, target_currency_id, rate
-            FROM public.exchange_rates
-            WHERE id = ?
+            SELECT
+                CAST(er.id AS bigint) AS id,
+                CAST(bc.id AS bigint) AS base_id,
+                bc.code AS base_code,
+                bc.full_name AS base_name,
+                bc.sign AS base_sign,
+                CAST(tc.id AS bigint) AS target_id,
+                tc.code AS target_code,
+                tc.full_name AS target_name,
+                tc.sign AS target_sign,
+                er.rate AS rate
+            FROM public.exchange_rates AS er
+            JOIN public.currencies bc ON er.base_currency_id = bc.id
+            JOIN public.currencies tc ON er.target_currency_id = tc.id
+            WHERE (
+                base_currency_id = (SELECT c.id FROM public.currencies c WHERE c.code = ?) AND
+                target_currency_id = (SELECT  c2.id FROM public.currencies c2 WHERE c2.code = ?)
+            )
             """;
 
     private static final String UPDATE = """

@@ -11,9 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Prepare ExchangeServlet to logic implementation">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/dao/ExchangeRateDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/dao/ExchangeRateDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/dao/ExchangeRateDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/dao/ExchangeRateDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +206,7 @@
       <workItem from="1694862361616" duration="63000" />
       <workItem from="1694863606920" duration="106000" />
       <workItem from="1694871451679" duration="2835000" />
-      <workItem from="1694929445228" duration="2879000" />
+      <workItem from="1694929445228" duration="3505000" />
     </task>
     <task id="LOCAL-00001" summary="Add doPost method to CurrenciesServlet">
       <option name="closed" value="true" />

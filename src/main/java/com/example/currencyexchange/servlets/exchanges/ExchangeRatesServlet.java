@@ -17,7 +17,6 @@ import java.util.List;
 public class ExchangeRatesServlet extends HttpServlet {
     private final ExchangeRateDao exchangeRateDao = ExchangeRateDao.getInstance();
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final String INTEGRITY_CONSTRAINT_VIOLATION_CODE = "23505";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -42,7 +43,7 @@ public class ExchangeRatesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String baseCurrencyCode = req.getParameter("baseCurrencyCode");
         String targetCurrencyCode = req.getParameter("targetCurrencyCode");
-        String rate = req.getParameter("rate");
+        String rateParam = req.getParameter("rate");
 
         if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -60,7 +61,7 @@ public class ExchangeRatesServlet extends HttpServlet {
             ));
         }
 
-        if (rate == null || rate.isBlank()) {
+        if (rateParam == null || rateParam.isBlank()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
                     HttpServletResponse.SC_BAD_REQUEST,
@@ -73,6 +74,17 @@ public class ExchangeRatesServlet extends HttpServlet {
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
                     HttpServletResponse.SC_BAD_REQUEST,
                     "Currency code must to be in ISO 4217 format"
+            ));
+        }
+
+        BigDecimal rate = null;
+        try {
+            rate = BigDecimal.valueOf(Double.parseDouble(rateParam));
+        } catch (NumberFormatException e) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_BAD_REQUEST,
+                    "Incorrect value of rate parameter"
             ));
         }
 

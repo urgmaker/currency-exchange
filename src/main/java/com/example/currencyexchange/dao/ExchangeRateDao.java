@@ -13,31 +13,31 @@ import java.util.Optional;
 public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     private static final ExchangeRateDao INSTANCE = new ExchangeRateDao();
     private static final String FIND_ALL = """
-            SELECT id, base_currency_id, target_currency_id, rate
-            FROM currency_repository.currency_exchanger.exchange_rates
+            SELECT CAST(public.exchange_rates.id AS bigint), base_currency_id, target_currency_id, rate
+            FROM public.exchange_rates
             """;
 
     private static final String FIND_BY_ID = """
             SELECT base_currency_id, target_currency_id, rate
-            FROM currency_repository.currency_exchanger.exchange_rates
+            FROM public.exchange_rates
             WHERE id = ?
             """;
 
     private static final String UPDATE = """
-            UPDATE currency_repository.currency_exchanger.exchange_rates
+            UPDATE public.exchange_rates
             SET base_currency_id = ?, target_currency_id = ?, rate = ?
             WHERE id = ?
             """;
 
     private static final String SAVE = """
-            INSERT INTO currency_repository.currency_exchanger.exchange_rates
+            INSERT INTO public.exchange_rates
             (base_currency_id, target_currency_id, rate)
             VALUES (?, ?, ?)
             """;
 
     private static final String FIND_BY_CODE = """
-            SELECT id, base_currency_id, target_currency_id, rate
-            FROM currency_repository.currency_exchanger.exchange_rates
+            SELECT CAST(public.exchange_rates.id AS bigint), base_currency_id, target_currency_id, rate
+            FROM public.exchange_rates
             WHERE base_currency_id = ? AND target_currency_id = ?
             """;
 

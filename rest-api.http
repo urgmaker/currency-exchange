@@ -22,7 +22,8 @@ POST http://localhost:8080/exchangeRates
 ###
 
 PATCH http://localhost:8080/exchangeRate/USDRUB
-
+Content-Type: application/x-www-form-urlencoded
 ###
 
 GET http://localhost:8080/exchange?from=USD&to=EUR&amount=10
+

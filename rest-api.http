@@ -21,7 +21,7 @@ POST http://localhost:8080/exchangeRates
 
 ###
 
-PATCH http://localhost:8080/exchangeRate/USDRUB
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=130
 Content-Type: application/x-www-form-urlencoded
 ###
 

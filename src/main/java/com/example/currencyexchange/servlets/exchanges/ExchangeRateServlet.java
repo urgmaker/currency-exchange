@@ -79,9 +79,9 @@ public class ExchangeRateServlet extends HttpServlet {
             ));
         }
 
-        String parameter = req.getReader().readLine();
+        String rateParam = req.getParameter("rate");
 
-        if (parameter == null || !parameter.contains("rate")) {
+        if (rateParam == null || rateParam.isBlank()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
                     HttpServletResponse.SC_BAD_REQUEST,
@@ -91,13 +91,12 @@ public class ExchangeRateServlet extends HttpServlet {
 
         String baseCurrencyCode = url.substring(0, 3);
         String targetCurrencyCode = url.substring(3);
-        String paramRateValue = parameter.replace("rate=", "");
 
         Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
 
         BigDecimal rate = null;
         try {
-            rate = BigDecimal.valueOf(Double.parseDouble(paramRateValue));
+            rate = BigDecimal.valueOf(Double.parseDouble(rateParam));
         } catch (NumberFormatException e) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(

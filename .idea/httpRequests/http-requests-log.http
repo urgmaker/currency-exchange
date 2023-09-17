@@ -1,3 +1,92 @@
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=130
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T182306.200.json
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB
+Content-Type: application/x-www-form-urlencoded
+rate = 120:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T182249.400.html
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=120
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T182227.200.json
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=120
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T181930.500.html
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=120
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T181404.500.html
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=120
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T181227.500.html
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=120
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T181114.500.html
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=120
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-17T181016.400.json
+
+###
+
 PATCH http://localhost:8080/exchangeRate/USDRUB
 Content-Type: application/x-www-form-urlencoded
 rate = 120:

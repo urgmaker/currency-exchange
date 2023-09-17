@@ -50,7 +50,7 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
 
     private static final String UPDATE = """
             UPDATE public.exchange_rates
-            SET base_currency_id = ?, target_currency_id = ?, rate = ?
+            SET (base_currency_id, target_currency_id, rate) = (?, ?, ?)
             WHERE id = ?
             """;
 
@@ -145,8 +145,8 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     public void update(ExchangeRateModel entity) {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE)) {
-            preparedStatement.setObject(1, entity.getBaseCurrency());
-            preparedStatement.setObject(2, entity.getTargetCurrency());
+            preparedStatement.setObject(1, entity.getBaseCurrency().getId());
+            preparedStatement.setObject(2, entity.getTargetCurrency().getId());
             preparedStatement.setObject(3, entity.getRate());
             preparedStatement.setObject(4, entity.getId());
         } catch (SQLException e) {

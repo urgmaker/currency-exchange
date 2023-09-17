@@ -45,10 +45,7 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             FROM public.exchange_rates AS er
             JOIN public.currencies bc ON er.base_currency_id = bc.id
             JOIN public.currencies tc ON er.target_currency_id = tc.id
-            WHERE (
-                base_currency_id = (SELECT c.id FROM public.currencies c WHERE c.code = ?) AND
-                target_currency_id = (SELECT  c2.id FROM public.currencies c2 WHERE c2.code = ?)
-            )
+            WHERE er.id = ?
             """;
 
     private static final String UPDATE = """
@@ -64,9 +61,24 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
             """;
 
     private static final String FIND_BY_CODE = """
-            SELECT CAST(public.exchange_rates.id AS bigint), base_currency_id, target_currency_id, rate
-            FROM public.exchange_rates
-            WHERE base_currency_id = ? AND target_currency_id = ?
+            SELECT
+                CAST(er.id AS bigint) AS id,
+                CAST(bc.id AS bigint) AS base_id,
+                bc.code AS base_code,
+                bc.full_name AS base_name,
+                bc.sign AS base_sign,
+                CAST(tc.id AS bigint) AS target_id,
+                tc.code AS target_code,
+                tc.full_name AS target_name,
+                tc.sign AS target_sign,
+                er.rate AS rate
+            FROM public.exchange_rates AS er
+            JOIN public.currencies bc ON er.base_currency_id = bc.id
+            JOIN public.currencies tc ON er.target_currency_id = tc.id
+            WHERE (
+                base_currency_id = (SELECT c.id FROM public.currencies c WHERE c.code = CAST(? AS varchar)) AND
+                target_currency_id = (SELECT  c2.id FROM public.currencies c2 WHERE c2.code = CAST(? AS varchar))
+            )
             """;
 
     private ExchangeRateDao() {
@@ -115,12 +127,13 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     }
 
     public Optional<ExchangeRateModel> findByCode(String baseCurrencyCode, String targetCurrencyCode) throws SQLException {
-        try (Connection connection = ConnectionManager.get();
+            try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_CODE)) {
-            preparedStatement.setString(1, baseCurrencyCode);
-            preparedStatement.setString(2, targetCurrencyCode);
+            preparedStatement.setObject(1, baseCurrencyCode);
+            preparedStatement.setObject(2, targetCurrencyCode);
 
             ResultSet resultSet = preparedStatement.executeQuery();
+
             if (!resultSet.next()) {
                 return Optional.empty();
             }
@@ -177,12 +190,6 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
                     ),
                     resultSet.getObject("rate", BigDecimal.class)
             );
-//            return new ExchangeRateModel(
-//                    resultSet.getObject("id", Long.class),
-//                    resultSet.getObject("base_currency_id", CurrencyModel.class),
-//                    resultSet.getObject("target_currency_id", CurrencyModel.class),
-//                    resultSet.getObject("rate", BigDecimal.class)
-//            );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

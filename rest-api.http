@@ -6,7 +6,8 @@ GET http://localhost:8080/currency/EUR
 
 ###
 
-POST http://localhost:8080/currencies
+POST http://localhost:8080/currencies?name=Lari&code=GEL&sign=₾
+Content-Type: application/x-www-form-urlencoded
 
 ###
 

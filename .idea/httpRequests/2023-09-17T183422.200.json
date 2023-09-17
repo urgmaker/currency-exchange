@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "code": "USD",
+    "sign": "$",
+    "name": "US Dollar"
+  },
+  {
+    "id": 2,
+    "code": "EUR",
+    "sign": "€",
+    "name": "Euro"
+  },
+  {
+    "id": 3,
+    "code": "RUB",
+    "sign": "₽",
+    "name": "Russian Ruble"
+  },
+  {
+    "id": 4,
+    "code": "UAH",
+    "sign": "₴",
+    "name": "Hryvnia"
+  },
+  {
+    "id": 5,
+    "code": "KZT",
+    "sign": "₸",
+    "name": "Tenge"
+  },
+  {
+    "id": 6,
+    "code": "GBP",
+    "sign": "£",
+    "name": "Pound Sterling"
+  }
+]

@@ -81,12 +81,17 @@ public class CurrenciesServlet extends HttpServlet {
             objectMapper.writeValue(resp.getWriter(), currency);
         } catch (SQLException e) {
             if (e.getSQLState().equals(INTEGRITY_CONSTRAINT_VIOLATION_CODE)) {
-                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                resp.setStatus(HttpServletResponse.SC_CONFLICT);
                 objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                        "Database error! Please, try again later"
+                        HttpServletResponse.SC_CONFLICT,
+                        e.getMessage()
                 ));
             }
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "Database error! Please, try again later"
+            ));
         }
     }
 }

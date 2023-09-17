@@ -1,5 +1,6 @@
 package com.example.currencyexchange.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -12,6 +13,7 @@ public class CurrencyModel {
     @NonNull
     private String code;
     @NonNull
+    @JsonProperty("name")
     private String fullName;
     @NonNull
     private String sign;

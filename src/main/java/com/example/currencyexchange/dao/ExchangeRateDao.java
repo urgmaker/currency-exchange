@@ -15,11 +15,11 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     private static final String FIND_ALL = """
             SELECT
                 CAST(er.id AS bigint) AS id,
-                bc.id AS base_id,
+                CAST(bc.id AS bigint) AS base_id,
                 bc.code AS base_code,
                 bc.full_name AS base_name,
                 bc.sign AS base_sign,
-                tc.id AS target_id,
+                CAST(tc.id AS bigint) AS target_id,
                 tc.code AS target_code,
                 tc.full_name AS target_name,
                 tc.sign AS target_sign,

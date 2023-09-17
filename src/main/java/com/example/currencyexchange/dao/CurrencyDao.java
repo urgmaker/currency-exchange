@@ -18,24 +18,24 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
 
     private static final String FIND_BY_ID = """
             SELECT code, full_name, sign
-            FROM currency_exchanger.currencies
+            FROM public.currencies
             WHERE id = ?
             """;
 
     private static final String UPDATE = """
-            UPDATE currency_exchanger.currencies
+            UPDATE public.currencies
             SET code = ?, full_name = ?, sign = ?
             WHERE id = ?
             """;
 
     private static final String SAVE = """
-            INSERT INTO currency_exchanger.currencies (code, full_name, sign)\s
+            INSERT INTO public.currencies (code, full_name, sign)
             VALUES (?, ?, ?)
             """;
 
     private static final String FIND_BY_CODE = """
-            SELECT id, code, full_name, sign
-            FROM currency_exchanger.currencies
+            SELECT CAST(public.currencies.id AS bigint), code, full_name, sign
+            FROM public.currencies
             WHERE code = ?
             """;
 

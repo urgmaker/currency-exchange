@@ -147,11 +147,27 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     private ExchangeRateModel builderExchangeRates(ResultSet resultSet) {
         try {
             return new ExchangeRateModel(
-                    resultSet.getObject("id", Long.class),
-                    resultSet.getObject("base_currency_id", CurrencyModel.class),
-                    resultSet.getObject("target_currency_id", CurrencyModel.class),
+                resultSet.getObject("id", Long.class),
+                    new CurrencyModel(
+                            resultSet.getObject("base_id", Long.class),
+                            resultSet.getObject("base_code", String.class),
+                            resultSet.getObject("base_name", String.class),
+                            resultSet.getObject("base_sign", String.class)
+                    ),
+                    new CurrencyModel(
+                            resultSet.getObject("target_id", Long.class),
+                            resultSet.getObject("target_code", String.class),
+                            resultSet.getObject("target_name", String.class),
+                            resultSet.getObject("target_sign", String.class)
+                    ),
                     resultSet.getObject("rate", BigDecimal.class)
             );
+//            return new ExchangeRateModel(
+//                    resultSet.getObject("id", Long.class),
+//                    resultSet.getObject("base_currency_id", CurrencyModel.class),
+//                    resultSet.getObject("target_currency_id", CurrencyModel.class),
+//                    resultSet.getObject("rate", BigDecimal.class)
+//            );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

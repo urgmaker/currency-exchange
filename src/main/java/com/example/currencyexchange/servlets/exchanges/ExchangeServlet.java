@@ -27,29 +27,33 @@ public class ExchangeServlet extends HttpServlet {
         String targetCurrencyCode = req.getParameter("to");
         String amountParam = req.getParameter("amount");
 
-        if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - from"
-            ));
-        }
-        if (targetCurrencyCode == null || targetCurrencyCode.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - to"
-            ));
-        }
-        if (amountParam == null || amountParam.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - amount"
-            ));
-        }
+        Validator.isValidParams(baseCurrencyCode, resp, objectMapper);
+        Validator.isValidParams(targetCurrencyCode, resp, objectMapper);
+        Validator.isValidParams(amountParam, resp, objectMapper);
 
         Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
+
+//        if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - from"
+//            ));
+//        }
+//        if (targetCurrencyCode == null || targetCurrencyCode.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - to"
+//            ));
+//        }
+//        if (amountParam == null || amountParam.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - amount"
+//            ));
+//        }
 
         BigDecimal amount = null;
 

@@ -45,29 +45,9 @@ public class ExchangeRatesServlet extends HttpServlet {
         String targetCurrencyCode = req.getParameter("targetCurrencyCode");
         String rateParam = req.getParameter("rate");
 
-        if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - baseCurrencyCode"
-            ));
-        }
-
-        if (targetCurrencyCode == null || targetCurrencyCode.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - targetCurrencyCode"
-            ));
-        }
-
-        if (rateParam == null || rateParam.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - rate"
-            ));
-        }
+        Validator.isValidParams(baseCurrencyCode, resp, objectMapper);
+        Validator.isValidParams(targetCurrencyCode, resp, objectMapper);
+        Validator.isValidParams(rateParam, resp, objectMapper);
 
         if (Validator.isNotValidCurrencyCode(baseCurrencyCode)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -76,6 +56,30 @@ public class ExchangeRatesServlet extends HttpServlet {
                     "Currency code must to be in ISO 4217 format"
             ));
         }
+
+//        if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - baseCurrencyCode"
+//            ));
+//        }
+//
+//        if (targetCurrencyCode == null || targetCurrencyCode.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - targetCurrencyCode"
+//            ));
+//        }
+//
+//        if (rateParam == null || rateParam.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - rate"
+//            ));
+//        }
 
         BigDecimal rate = null;
         try {

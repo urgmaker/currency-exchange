@@ -41,29 +41,9 @@ public class CurrenciesServlet extends HttpServlet {
         String code = req.getParameter("code");
         String sign = req.getParameter("sign");
 
-        if (name == null || name.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - name"
-            ));
-        }
-
-        if (code == null || code.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - code"
-            ));
-        }
-
-        if (sign == null || sign.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing parameter - sign"
-            ));
-        }
+        Validator.isValidParams(name, resp, objectMapper);
+        Validator.isValidParams(code, resp, objectMapper);
+        Validator.isValidParams(sign, resp, objectMapper);
 
         if (Validator.isNotValidCurrencyCode(code)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -72,6 +52,30 @@ public class CurrenciesServlet extends HttpServlet {
                     "Currency code must to be in ISO 4217 format"
             ));
         }
+
+//        if (name == null || name.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - name"
+//            ));
+//        }
+//
+//        if (code == null || code.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - code"
+//            ));
+//        }
+//
+//        if (sign == null || sign.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing parameter - sign"
+//            ));
+//        }
 
         try {
             CurrencyModel currency = new CurrencyModel(code, name, sign);

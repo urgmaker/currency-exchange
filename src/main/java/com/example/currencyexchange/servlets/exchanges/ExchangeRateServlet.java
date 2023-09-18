@@ -81,13 +81,15 @@ public class ExchangeRateServlet extends HttpServlet {
 
         String rateParam = req.getParameter("rate");
 
-        if (rateParam == null || rateParam.isBlank()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-                    HttpServletResponse.SC_BAD_REQUEST,
-                    "Missing required parameter rate"
-            ));
-        }
+        Validator.isValidParams(rateParam, resp, objectMapper);
+
+//        if (rateParam == null || rateParam.isBlank()) {
+//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
+//                    HttpServletResponse.SC_BAD_REQUEST,
+//                    "Missing required parameter rate"
+//            ));
+//        }
 
         String baseCurrencyCode = url.substring(0, 3);
         String targetCurrencyCode = url.substring(3);

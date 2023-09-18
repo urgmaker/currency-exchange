@@ -1,0 +1,4 @@
+{
+  "errorCode": 409,
+  "message": "ERROR: duplicate key value violates unique constraint \"exchange_rates_base_currency_id_target_currency_id_key\"\n  Detail: Key (base_currency_id, target_currency_id)=(3, 2) already exists."
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "baseCurrency": {
+      "id": 1,
+      "code": "USD",
+      "sign": "$",
+      "name": "US Dollar"
+    },
+    "targetCurrency": {
+      "id": 2,
+      "code": "EUR",
+      "sign": "€",
+      "name": "Euro"
+    },
+    "rate": 0.940000
+  },
+  {
+    "id": 2,
+    "baseCurrency": {
+      "id": 1,
+      "code": "USD",
+      "sign": "$",
+      "name": "US Dollar"
+    },
+    "targetCurrency": {
+      "id": 3,
+      "code": "RUB",
+      "sign": "₽",
+      "name": "Russian Ruble"
+    },
+    "rate": 63.750000
+  },
+  {
+    "id": 3,
+    "baseCurrency": {
+      "id": 1,
+      "code": "USD",
+      "sign": "$",
+      "name": "US Dollar"
+    },
+    "targetCurrency": {
+      "id": 4,
+      "code": "UAH",
+      "sign": "₴",
+      "name": "Hryvnia"
+    },
+    "rate": 36.950000
+  },
+  {
+    "id": 4,
+    "baseCurrency": {
+      "id": 1,
+      "code": "USD",
+      "sign": "$",
+      "name": "US Dollar"
+    },
+    "targetCurrency": {
+      "id": 5,
+      "code": "KZT",
+      "sign": "₸",
+      "name": "Tenge"
+    },
+    "rate": 469.880000
+  },
+  {
+    "id": 5,
+    "baseCurrency": {
+      "id": 1,
+      "code": "USD",
+      "sign": "$",
+      "name": "US Dollar"
+    },
+    "targetCurrency": {
+      "id": 6,
+      "code": "GBP",
+      "sign": "£",
+      "name": "Pound Sterling"
+    },
+    "rate": 0.810000
+  }
+]

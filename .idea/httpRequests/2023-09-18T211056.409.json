@@ -1,0 +1,4 @@
+{
+  "errorCode": 409,
+  "message": "ERROR: duplicate key value violates unique constraint \"currencies_code_key\"\n  Detail: Key (code)=(GEL) already exists."
+}

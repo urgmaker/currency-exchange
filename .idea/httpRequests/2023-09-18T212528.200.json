@@ -1,0 +1,16 @@
+{
+  "id": 2,
+  "baseCurrency": {
+    "id": 1,
+    "code": "USD",
+    "sign": "$",
+    "name": "US Dollar"
+  },
+  "targetCurrency": {
+    "id": 3,
+    "code": "RUB",
+    "sign": "₽",
+    "name": "Russian Ruble"
+  },
+  "rate": 130.0
+}

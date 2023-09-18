@@ -122,9 +122,9 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             Long savedId = null;
 
             try {
-                ResultSet resultId = preparedStatement.getGeneratedKeys();
-                if (resultId.next()) {
-                    savedId = resultId.getLong(1);
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    savedId = generatedKeys.getLong(1);
                 } else {
                     connection.rollback();
                 }

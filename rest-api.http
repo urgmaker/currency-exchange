@@ -19,6 +19,7 @@ GET http://localhost:8080/exchangeRate/USDRUB
 ###
 
 POST http://localhost:8080/exchangeRates
+Content-Type: application/x-www-form-urlencoded
 
 ###
 

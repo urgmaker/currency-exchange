@@ -127,7 +127,7 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     }
 
     public Optional<ExchangeRateModel> findByCode(String baseCurrencyCode, String targetCurrencyCode) throws SQLException {
-            try (Connection connection = ConnectionManager.get();
+        try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_CODE)) {
             preparedStatement.setObject(1, baseCurrencyCode);
             preparedStatement.setObject(2, targetCurrencyCode);
@@ -155,27 +155,36 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     }
 
     @Override
-    public Long save(ExchangeRateModel entity) {
+    public Long save(ExchangeRateModel entity) throws SQLException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)) {
+            connection.setAutoCommit(false);
             preparedStatement.setObject(1, entity.getBaseCurrency());
             preparedStatement.setObject(2, entity.getTargetCurrency());
             preparedStatement.setObject(3, entity.getRate());
 
-            ResultSet savedExchangeRate = preparedStatement.getGeneratedKeys();
-            savedExchangeRate.next();
-            Long savedId = savedExchangeRate.getLong("id");
-            connection.commit();
+            preparedStatement.executeUpdate();
+
+            Long savedId = null;
+
+            try {
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    savedId = generatedKeys.getLong(1);
+                } else {
+                    connection.rollback();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             return savedId;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 
     private ExchangeRateModel builderExchangeRates(ResultSet resultSet) {
         try {
             return new ExchangeRateModel(
-                resultSet.getObject("id", Long.class),
+                    resultSet.getObject("id", Long.class),
                     new CurrencyModel(
                             resultSet.getObject("base_id", Long.class),
                             resultSet.getObject("base_code", String.class),

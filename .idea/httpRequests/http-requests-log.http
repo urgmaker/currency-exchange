@@ -1,3 +1,41 @@
+GET http://localhost:8080/exchangeRate/USDRUB
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T205847.200.json
+
+###
+
+GET http://localhost:8080/exchangeRates
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T205804.200.json
+
+###
+
+GET http://localhost:8080/currencies
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T205752.200.json
+
+###
+
+POST http://localhost:8080/currencies?name=Lari&code=GEL&sign=₾
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T205714.409.json
+
+###
+
 POST http://localhost:8080/currencies?name=Lari&code=GEL&sign=₾
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 0

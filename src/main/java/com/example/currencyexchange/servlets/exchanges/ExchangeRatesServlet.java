@@ -45,9 +45,9 @@ public class ExchangeRatesServlet extends HttpServlet {
         String targetCurrencyCode = req.getParameter("targetCurrencyCode");
         String rateParam = req.getParameter("rate");
 
-        Validator.isValidParams(baseCurrencyCode, resp, objectMapper);
-        Validator.isValidParams(targetCurrencyCode, resp, objectMapper);
-        Validator.isValidParams(rateParam, resp, objectMapper);
+        Validator.validateParams(baseCurrencyCode, resp, objectMapper);
+        Validator.validateParams(targetCurrencyCode, resp, objectMapper);
+        Validator.validateParams(rateParam, resp, objectMapper);
 
         if (Validator.isNotValidCurrencyCode(baseCurrencyCode)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

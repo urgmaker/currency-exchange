@@ -27,11 +27,11 @@ public class ExchangeServlet extends HttpServlet {
         String targetCurrencyCode = req.getParameter("to");
         String amountParam = req.getParameter("amount");
 
-        Validator.isValidParams(baseCurrencyCode, resp, objectMapper);
-        Validator.isValidParams(targetCurrencyCode, resp, objectMapper);
-        Validator.isValidParams(amountParam, resp, objectMapper);
+        Validator.validateParams(baseCurrencyCode, resp, objectMapper);
+        Validator.validateParams(targetCurrencyCode, resp, objectMapper);
+        Validator.validateParams(amountParam, resp, objectMapper);
 
-        Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
+        Validator.validateParams(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
 
 //        if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
 //            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

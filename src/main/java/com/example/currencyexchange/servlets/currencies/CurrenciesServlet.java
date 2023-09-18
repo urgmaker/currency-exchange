@@ -41,9 +41,9 @@ public class CurrenciesServlet extends HttpServlet {
         String code = req.getParameter("code");
         String sign = req.getParameter("sign");
 
-        Validator.isValidParams(name, resp, objectMapper);
-        Validator.isValidParams(code, resp, objectMapper);
-        Validator.isValidParams(sign, resp, objectMapper);
+        Validator.validateParams(name, resp, objectMapper);
+        Validator.validateParams(code, resp, objectMapper);
+        Validator.validateParams(sign, resp, objectMapper);
 
         if (Validator.isNotValidCurrencyCode(code)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

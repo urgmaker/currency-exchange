@@ -45,7 +45,7 @@ public class ExchangeRateServlet extends HttpServlet {
         String baseCurrencyCode = url.substring(0, 3);
         String targetCurrencyCode = url.substring(3);
 
-        Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
+        Validator.validateParams(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
 
         try {
             Optional<ExchangeRateModel> exchangeRateOptional = exchangeRateDao.findByCode(baseCurrencyCode, targetCurrencyCode);
@@ -81,7 +81,7 @@ public class ExchangeRateServlet extends HttpServlet {
 
         String rateParam = req.getParameter("rate");
 
-        Validator.isValidParams(rateParam, resp, objectMapper);
+        Validator.validateParams(rateParam, resp, objectMapper);
 
 //        if (rateParam == null || rateParam.isBlank()) {
 //            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -94,7 +94,7 @@ public class ExchangeRateServlet extends HttpServlet {
         String baseCurrencyCode = url.substring(0, 3);
         String targetCurrencyCode = url.substring(3);
 
-        Validator.validate(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
+        Validator.validateParams(resp, baseCurrencyCode, targetCurrencyCode, objectMapper);
 
         BigDecimal rate = null;
         try {

@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Add changes to CurrencyDao.save()">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Refactor validation of params logic">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java" afterDir="false" />
@@ -122,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695034982791</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Refactor validation of params logic">
+      <option name="closed" value="true" />
+      <created>1695035908139</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695035908139</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +139,8 @@
     <MESSAGE value="Add doPost method to CurrenciesServlet" />
     <MESSAGE value="Prepare ExchangeRatesServlet to logic implementation" />
     <MESSAGE value="Add changes to CurrencyDao.save()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add changes to CurrencyDao.save()" />
+    <MESSAGE value="Refactor validation of params logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor validation of params logic" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

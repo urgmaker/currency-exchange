@@ -22,7 +22,7 @@ public final class Validator {
         return !currencyCodes.contains(code);
     }
 
-    public static void isValidParams(String paramValue, HttpServletResponse resp, ObjectMapper objectMapper) throws IOException {
+    public static void validateParams(String paramValue, HttpServletResponse resp, ObjectMapper objectMapper) throws IOException {
         if (paramValue == null || paramValue.isBlank()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
@@ -32,7 +32,7 @@ public final class Validator {
         }
     }
 
-    public static void validate(HttpServletResponse resp, String baseCurrencyCode, String targetCurrencyCode, ObjectMapper objectMapper) throws IOException {
+    public static void validateParams(HttpServletResponse resp, String baseCurrencyCode, String targetCurrencyCode, ObjectMapper objectMapper) throws IOException {
         if (isNotValidCurrencyCode(baseCurrencyCode)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(

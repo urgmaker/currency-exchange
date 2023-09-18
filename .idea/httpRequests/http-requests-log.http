@@ -1,3 +1,89 @@
+GET http://localhost:8080/exchange?from=USD&to=EUR&amount=10
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T212532.200.json
+
+###
+
+PATCH http://localhost:8080/exchangeRate/USDRUB?rate=130
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T212528.200.json
+
+###
+
+POST http://localhost:8080/exchangeRates?baseCurrencyCode=RUB&targetCurrencyCode=EUR&rate=0.99
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T212509.409.json
+
+###
+
+POST http://localhost:8080/exchangeRates?baseCurrencyCode=RUB&targetCurrencyCode=EUR&rate=0.99
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T212432.200.json
+
+###
+
+POST http://localhost:8080/exchangeRates?baseCurrencyCode=USD&targetCurrencyCode=EUR&rate=0.99
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T211803.500.json
+
+###
+
+POST http://localhost:8080/exchangeRates?baseCurrencyCode=USD&targetCurrencyCode=EUR&rate=0.99
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T211513.500.json
+
+###
+
+POST http://localhost:8080/currencies?name=Lari&code=GEL&sign=₾
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T211056.409.json
+
+###
+
+POST http://localhost:8080/exchangeRates?baseCurrencyCode=USD&targetCurrencyCode=EUR&rate=0.99
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-09-18T210927.500.json
+
+###
+
 GET http://localhost:8080/exchangeRate/USDRUB
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
@@ -435,52 +521,6 @@ User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 <> 2023-09-17T123443.200.json
-
-###
-
-POST http://localhost:8080/currencies
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-09-17T123428.400.json
-
-###
-
-GET http://localhost:8080/currency/EUR
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-09-17T123426.200.json
-
-###
-
-GET http://localhost:8080/currencies
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-09-17T123420.200.json
-
-###
-
-GET http://localhost:8080/exchange?from=USD&to=EUR&amount=10
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-09-17T123328.200.json
-
-###
-
-GET http://localhost:8080/currencies
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-09-17T122910.200.json
 
 ###
 

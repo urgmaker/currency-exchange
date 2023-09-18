@@ -158,9 +158,8 @@ public class ExchangeRateDao implements Dao<Long, ExchangeRateModel> {
     public Long save(ExchangeRateModel entity) throws SQLException {
         try (Connection connection = ConnectionManager.get();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE, Statement.RETURN_GENERATED_KEYS)) {
-            connection.setAutoCommit(false);
-            preparedStatement.setObject(1, entity.getBaseCurrency());
-            preparedStatement.setObject(2, entity.getTargetCurrency());
+            preparedStatement.setObject(1, entity.getBaseCurrency().getId());
+            preparedStatement.setObject(2, entity.getTargetCurrency().getId());
             preparedStatement.setObject(3, entity.getRate());
 
             preparedStatement.executeUpdate();

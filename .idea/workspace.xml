@@ -9,13 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Add rest-api.http">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2175a978-aba1-4894-be9e-32c34b6af5c8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2175a978-aba1-4894-be9e-32c34b6af5c8.xml" afterDir="false" />
+    <list default="true" id="5ea363b8-3ec5-4add-ab76-7a017209d81f" name="Changes" comment="Add changes to ExchangeRateDao.save">
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2023-09-17T122910.200.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/rest-api.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/CurrencyDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/currencyexchange/dao/ExchangeRateDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/dao/CurrencyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/dao/CurrencyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/exchanges/ExchangeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/servlets/exchanges/ExchangeServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/utils/Validator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/CurrencyExchange-1.0-SNAPSHOT/WEB-INF/classes/com/example/currencyexchange/utils/Validator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/dao/CurrencyDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/dao/CurrencyDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/currencies/CurrenciesServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRateServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/exchanges/ExchangeServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/servlets/exchanges/ExchangeServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/utils/Validator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/currencyexchange/utils/Validator.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,19 +99,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.13">
-    <configuration name="rest-api | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="2" requestIdentifier="#2" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="rest-api | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="3" requestIdentifier="#3" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="4" requestIdentifier="#4" runType="Run single request">
+    <configuration name="rest-api | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="5" requestIdentifier="#5" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="5" requestIdentifier="#5" runType="Run single request">
+    <configuration name="rest-api | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="6" requestIdentifier="#6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api | #7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="7" requestIdentifier="#7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/rest-api.http" index="8" requestIdentifier="#8" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -203,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api | #5" />
-        <item itemvalue="HTTP Request.rest-api | #4" />
-        <item itemvalue="HTTP Request.rest-api | #1" />
+        <item itemvalue="HTTP Request.rest-api | #8" />
+        <item itemvalue="HTTP Request.rest-api | #7" />
+        <item itemvalue="HTTP Request.rest-api | #6" />
         <item itemvalue="HTTP Request.rest-api | #3" />
-        <item itemvalue="HTTP Request.rest-api | #2" />
+        <item itemvalue="HTTP Request.rest-api | #5" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +275,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694943246580</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add changes to ExchangeRateDao.save">
+      <option name="closed" value="true" />
+      <created>1695060450274</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695060450274</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +305,19 @@
     <MESSAGE value="Add doPost method to CurrenciesServlet" />
     <MESSAGE value="Prepare ExchangeRatesServlet to logic implementation" />
     <MESSAGE value="Add rest-api.http" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add rest-api.http" />
+    <MESSAGE value="Add changes to ExchangeRateDao.save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add changes to ExchangeRateDao.save" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/currencyexchange/servlets/exchanges/ExchangeRatesServlet.java</url>
+          <line>112</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

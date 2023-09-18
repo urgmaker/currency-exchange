@@ -12,7 +12,7 @@ public final class PropertiesUtil {
     }
 
     static {
-      loadProperties();
+        loadProperties();
     }
 
     private static void loadProperties() {

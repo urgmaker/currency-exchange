@@ -57,30 +57,6 @@ public class ExchangeRatesServlet extends HttpServlet {
             ));
         }
 
-//        if (baseCurrencyCode == null || baseCurrencyCode.isBlank()) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-//                    HttpServletResponse.SC_BAD_REQUEST,
-//                    "Missing parameter - baseCurrencyCode"
-//            ));
-//        }
-//
-//        if (targetCurrencyCode == null || targetCurrencyCode.isBlank()) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-//                    HttpServletResponse.SC_BAD_REQUEST,
-//                    "Missing parameter - targetCurrencyCode"
-//            ));
-//        }
-//
-//        if (rateParam == null || rateParam.isBlank()) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-//                    HttpServletResponse.SC_BAD_REQUEST,
-//                    "Missing parameter - rate"
-//            ));
-//        }
-
         BigDecimal rate = null;
         try {
             rate = BigDecimal.valueOf(Double.parseDouble(rateParam));

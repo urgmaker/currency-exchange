@@ -53,30 +53,6 @@ public class CurrenciesServlet extends HttpServlet {
             ));
         }
 
-//        if (name == null || name.isBlank()) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-//                    HttpServletResponse.SC_BAD_REQUEST,
-//                    "Missing parameter - name"
-//            ));
-//        }
-//
-//        if (code == null || code.isBlank()) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-//                    HttpServletResponse.SC_BAD_REQUEST,
-//                    "Missing parameter - code"
-//            ));
-//        }
-//
-//        if (sign == null || sign.isBlank()) {
-//            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//            objectMapper.writeValue(resp.getWriter(), new ErrorResponseDto(
-//                    HttpServletResponse.SC_BAD_REQUEST,
-//                    "Missing parameter - sign"
-//            ));
-//        }
-
         try {
             CurrencyModel currency = new CurrencyModel(code, name, sign);
             Long savedCurrencyId = currencyDao.save(currency);

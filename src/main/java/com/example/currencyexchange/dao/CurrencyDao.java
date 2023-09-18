@@ -117,10 +117,20 @@ public class CurrencyDao implements Dao<Long, CurrencyModel> {
             preparedStatement.setObject(2, entity.getFullName());
             preparedStatement.setObject(3, entity.getSign());
 
-            ResultSet savedCurrency = preparedStatement.getGeneratedKeys();
-            savedCurrency.next();
-            Long savedId = savedCurrency.getLong("id");
-            connection.commit();
+            preparedStatement.executeUpdate();
+
+            Long savedId = null;
+
+            try {
+                ResultSet resultId = preparedStatement.getGeneratedKeys();
+                if (resultId.next()) {
+                    savedId = resultId.getLong(1);
+                } else {
+                    connection.rollback();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             return savedId;
         }
     }
